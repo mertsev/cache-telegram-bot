@@ -1,20 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Export generator="Cache" version="25">
-<Class name="REST.JSON">
-<Super>%Base</Super>
-<TimeCreated>64127,43909.386624</TimeCreated>
+Class REST.JSON Extends %Base
+{
 
-<UDLText name="T">
-<Content><![CDATA[
 // com
 
-]]></Content>
-</UDLText>
-
-<Method name="getMe">
-<ClassMethod>1</ClassMethod>
-<ReturnType>%Status</ReturnType>
-<Implementation><![CDATA[
+ClassMethod getMe() As %Status
+{
 	set status=$$$OK
 	// Definition of dynamic json object
 	set object = ##class(%Object).$new()
@@ -42,13 +32,10 @@
 		set status = ex.AsStatus()
 	}
 	quit $$$OK
-]]></Implementation>
-</Method>
+}
 
-<Method name="getUpdates">
-<ClassMethod>1</ClassMethod>
-<ReturnType>%Status</ReturnType>
-<Implementation><![CDATA[
+ClassMethod getUpdates() As %Status
+{
 	set status=$$$OK
 	// Definition of dynamic json object
 	set object = ##class(%Object).$new()
@@ -76,13 +63,10 @@
 		set status = ex.AsStatus()
 	}
 	quit $$$OK
-]]></Implementation>
-</Method>
+}
 
-<Method name="sendMessage">
-<ClassMethod>1</ClassMethod>
-<ReturnType>%Status</ReturnType>
-<Implementation><![CDATA[
+ClassMethod sendMessage() As %Status
+{
 	set status=$$$OK
 	// Definition of dynamic json object
 	set object = ##class(%Object).$new()
@@ -110,7 +94,7 @@
 		set status = ex.AsStatus()
 	}
 	quit $$$OK
-]]></Implementation>
-</Method>
-</Class>
-</Export>
+}
+
+}
+
