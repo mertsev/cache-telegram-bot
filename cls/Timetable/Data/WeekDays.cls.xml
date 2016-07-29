@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="Cache" version="25">
+<Class name="Timetable.Data.WeekDays">
+<Super>%Persistent</Super>
+<TimeCreated>64128,5242.631671</TimeCreated>
+
+<Property name="Name">
+<Type>%String</Type>
+<Required>1</Required>
+</Property>
+
+<Index name="NameIndex">
+<Properties>Name</Properties>
+<Unique>1</Unique>
+</Index>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^Timetable.Data.WeekDaysD</DataLocation>
+<DefaultData>WeekDaysDefaultData</DefaultData>
+<IdLocation>^Timetable.Data.WeekDaysD</IdLocation>
+<IndexLocation>^Timetable.Data.WeekDaysI</IndexLocation>
+<StreamLocation>^Timetable.Data.WeekDaysS</StreamLocation>
+<Data name="WeekDaysDefaultData">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Name</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+</Export>

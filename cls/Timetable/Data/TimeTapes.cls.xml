@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="Cache" version="25">
+<Class name="Timetable.Data.TimeTapes">
+<Description>
+Время лент</Description>
+<Super>%Persistent,%XML.Adaptor</Super>
+<TimeCreated>64128,2003.073197</TimeCreated>
+
+<Property name="Number">
+<Type>%Integer</Type>
+</Property>
+
+<Property name="TimeStart">
+<Type>%String</Type>
+</Property>
+
+<Property name="TimeEnd">
+<Type>%String</Type>
+</Property>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^Timetable.Data.TimeTapesD</DataLocation>
+<DefaultData>TimeTapesDefaultData</DefaultData>
+<IdLocation>^Timetable.Data.TimeTapesD</IdLocation>
+<IndexLocation>^Timetable.Data.TimeTapesI</IndexLocation>
+<StreamLocation>^Timetable.Data.TimeTapesS</StreamLocation>
+<Data name="TimeTapesDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Number</Value>
+</Value>
+<Value name="3">
+<Value>TimeStart</Value>
+</Value>
+<Value name="4">
+<Value>TimeEnd</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+</Export>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="Cache" version="25">
+<Routine name="Generate" type="MAC" languagemode="0"><![CDATA[
+Generate()
+	// Дни недели
+	s day = ##class(Timetable.Data.WeekDays).%New()
+	s day.Name = "Понедельник"
+	do day.%Save() 
+	kill
+	
+	s day = ##class(Timetable.Data.WeekDays).%New()
+	s day.Name = "Вторник"
+	do day.%Save() 
+	kill
+	
+	s day = ##class(Timetable.Data.WeekDays).%New()
+	s day.Name = "Среда"
+	do day.%Save() 
+	kill
+	
+	s day = ##class(Timetable.Data.WeekDays).%New()
+	s day.Name = "Четверг"
+	do day.%Save() 
+	kill
+	
+	s day = ##class(Timetable.Data.WeekDays).%New()
+	s day.Name = "Пятница"
+	do day.%Save() 
+	kill
+	
+	s day = ##class(Timetable.Data.WeekDays).%New()
+	s day.Name = "Суббота"
+	do day.%Save() 
+	kill
+
+	// Время лент
+	s time = ##class(Timetable.Data.TimeTapes).%New()
+	s time.Number = 1
+	s time.TimeStart = "08:30"
+	s time.TimeEnd = "10:05"
+	do time.%Save() 
+	kill
+	
+	s time = ##class(Timetable.Data.TimeTapes).%New()
+	s time.Number = 2
+	s time.TimeStart = "10:15"
+	s time.TimeEnd = "11:50"
+	do time.%Save() 
+	kill
+	
+	s time = ##class(Timetable.Data.TimeTapes).%New()
+	s time.Number = 3
+	s time.TimeStart = "12:00"
+	s time.TimeEnd = "13:35"
+	do s.%Save() 
+	kill
+	
+	s time = ##class(Timetable.Data.TimeTapes).%New()
+	s time.Number = 4
+	s time.TimeStart = "14:10"
+	s time.TimeEnd = "15:45"
+	do time.%Save() 
+	kill
+	
+	s time = ##class(Timetable.Data.TimeTapes).%New()
+	s time.Number = 5
+	s time.TimeStart = "16:00"
+	s time.TimeEnd = "17:35"
+	do time.%Save() 
+	kill
+	
+	s time = ##class(Timetable.Data.TimeTapes).%New()
+	s time.Number = 6
+	s time.TimeStart = "17:45"
+	s time.TimeEnd = "19:20"
+	do time.%Save() 
+	kill
+	
+	// Преподаватели
+	s teacher = ##class(Timetable.Data.Teachers).%New()
+	s teacher.FullName = "Речитский"
+	do teacher.%Save() 
+	kill
+	
+	s teacher = ##class(Timetable.Data.Teachers).%New()
+	s teacher.FullName = "Якунин"
+	do teacher.%Save() 
+	kill
+	
+	s teacher = ##class(Timetable.Data.Teachers).%New()
+	s teacher.FullName = "Погребников"
+	do teacher.%Save() 
+	kill
+	
+	s teacher = ##class(Timetable.Data.Teachers).%New()
+	s teacher.FullName = "Спиридонов"
+	do teacher.%Save() 
+	kill
+	
+	s teacher = ##class(Timetable.Data.Teachers).%New()
+	s teacher.FullName = "Молокова"
+	do teacher.%Save() 
+	kill
+	
+	s teacher = ##class(Timetable.Data.Teachers).%New()
+	s teacher.FullName = "Чекизов"
+	do teacher.%Save() 
+	kill
+	
+	s teacher = ##class(Timetable.Data.Teachers).%New()
+	s teacher.FullName = "Коношенко"
+	do teacher.%Save() 
+	kill
+	
+	s teacher = ##class(Timetable.Data.Teachers).%New()
+	s teacher.FullName = "Бабушкин"
+	do teacher.%Save() 
+	kill
+	
+	// Предметы
+	s subject = ##class(Timetable.Data.Subjects).%New()
+	s subject.Name = "Мат. анализ"
+	do subject.%Save() 
+	kill
+	
+	s subject = ##class(Timetable.Data.Subjects).%New()
+	s subject.Name = "Физика"
+	do subject.%Save() 
+	kill
+	
+	s subject = ##class(Timetable.Data.Subjects).%New()
+	s subject.Name = "ООП"
+	do subject.%Save() 
+	kill
+	
+	s subject = ##class(Timetable.Data.Subjects).%New()
+	s subject.Name = "WEB-программирование"
+	do subject.%Save() 
+	kill
+	
+	s subject = ##class(Timetable.Data.Subjects).%New()
+	s subject.Name = "Основы ПО"
+	do subject.%Save() 
+	kill
+	
+	s subject = ##class(Timetable.Data.Subjects).%New()
+	s subject.Name = "Теория баз данных"
+	do subject.%Save() 
+	kill
+	
+	s subject = ##class(Timetable.Data.Subjects).%New()
+	s subject.Name = "Теория языков программирования"
+	do subject.%Save() 
+	kill
+	
+	s subject = ##class(Timetable.Data.Subjects).%New()
+	s subject.Name = "Английский язык"
+	do subject.%Save() 
+	kill
+	
+	s subject = ##class(Timetable.Data.Subjects).%New()
+	s subject.Name = "Командный курсовой проект"
+	do subject.%Save() 
+	kill
+	
+]]></Routine>
+</Export>

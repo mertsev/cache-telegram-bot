@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="Cache" version="25">
+<Class name="Timetable.Data.Schedules">
+<Description>
+Расписание занятий</Description>
+<Super>%Persistent,%XML.Adaptor,%Populate</Super>
+<TimeCreated>64128,1613.190363</TimeCreated>
+
+<Property name="TimeTape">
+<Type>TimeTapes</Type>
+<Required>1</Required>
+</Property>
+
+<Index name="TimeTapeIndex">
+<Properties>TimeTape</Properties>
+</Index>
+
+<Property name="Subject">
+<Type>Subjects</Type>
+<Required>1</Required>
+</Property>
+
+<Index name="SubjectIndex">
+<Properties>Subject</Properties>
+</Index>
+
+<Property name="Teacher">
+<Type>Teachers</Type>
+<Required>1</Required>
+</Property>
+
+<Index name="TeacherIndex">
+<Properties>Teacher</Properties>
+</Index>
+
+<Property name="WeekDay">
+<Type>WeekDays</Type>
+<Required>1</Required>
+</Property>
+
+<Index name="WeekDayIndex">
+<Properties>WeekDay</Properties>
+</Index>
+
+<Method name="Generate">
+<ClassMethod>1</ClassMethod>
+<Implementation><![CDATA[
+	do ##class(Timetable.Data.WeekDays).%KillExtent()
+	do ##class(Timetable.Data.TimeTapes).%KillExtent()
+	do ##class(Timetable.Data.Teachers).%KillExtent()
+	do ##class(Timetable.Data.Subjects).%KillExtent()
+	do ##class(Timetable.Data.TeacherSubject).%KillExtent()
+	do ##class(Timetable.Data.Subjects).%KillExtent()
+	
+
+	try	{
+		// Дни недели
+		s day = ##class(Timetable.Data.WeekDays).%New()
+		s day.Name = "Понедельник"
+		do day.%Save() 
+		kill
+		
+		s day = ##class(Timetable.Data.WeekDays).%New()
+		s day.Name = "Вторник"
+		do day.%Save() 
+		kill
+		
+		s day = ##class(Timetable.Data.WeekDays).%New()
+		s day.Name = "Среда"
+		do day.%Save() 
+		kill
+		
+		s day = ##class(Timetable.Data.WeekDays).%New()
+		s day.Name = "Четверг"
+		do day.%Save() 
+		kill
+		
+		s day = ##class(Timetable.Data.WeekDays).%New()
+		s day.Name = "Пятница"
+		do day.%Save() 
+		kill
+		
+		s day = ##class(Timetable.Data.WeekDays).%New()
+		s day.Name = "Суббота"
+		do day.%Save() 
+		kill
+
+		// Время лент
+		s time = ##class(Timetable.Data.TimeTapes).%New()
+		s time.Number = 1
+		s time.TimeStart = "08:30"
+		s time.TimeEnd = "10:05"
+		do time.%Save() 
+		kill
+		
+		s time = ##class(Timetable.Data.TimeTapes).%New()
+		s time.Number = 2
+		s time.TimeStart = "10:15"
+		s time.TimeEnd = "11:50"
+		do time.%Save() 
+		kill
+		
+		s time = ##class(Timetable.Data.TimeTapes).%New()
+		s time.Number = 3
+		s time.TimeStart = "12:00"
+		s time.TimeEnd = "13:35"
+		do time.%Save() 
+		kill
+		
+		s time = ##class(Timetable.Data.TimeTapes).%New()
+		s time.Number = 4
+		s time.TimeStart = "14:10"
+		s time.TimeEnd = "15:45"
+		do time.%Save() 
+		kill
+		
+		s time = ##class(Timetable.Data.TimeTapes).%New()
+		s time.Number = 5
+		s time.TimeStart = "16:00"
+		s time.TimeEnd = "17:35"
+		do time.%Save() 
+		kill
+		
+		s time = ##class(Timetable.Data.TimeTapes).%New()
+		s time.Number = 6
+		s time.TimeStart = "17:45"
+		s time.TimeEnd = "19:20"
+		do time.%Save() 
+		kill
+
+		// Преподаватели
+		s teacher = ##class(Timetable.Data.Teachers).%New()
+		s teacher.FullName = "Речитский"
+		do teacher.%Save() 
+		kill
+		
+		s teacher = ##class(Timetable.Data.Teachers).%New()
+		s teacher.FullName = "Якунин"
+		do teacher.%Save() 
+		kill
+		
+		s teacher = ##class(Timetable.Data.Teachers).%New()
+		s teacher.FullName = "Погребников"
+		do teacher.%Save() 
+		kill
+		
+		s teacher = ##class(Timetable.Data.Teachers).%New()
+		s teacher.FullName = "Спиридонов"
+		do teacher.%Save() 
+		kill
+		
+		s teacher = ##class(Timetable.Data.Teachers).%New()
+		s teacher.FullName = "Молокова"
+		do teacher.%Save() 
+		kill
+		
+		s teacher = ##class(Timetable.Data.Teachers).%New()
+		s teacher.FullName = "Чекизов"
+		do teacher.%Save() 
+		kill
+		
+		s teacher = ##class(Timetable.Data.Teachers).%New()
+		s teacher.FullName = "Коношенко"
+		do teacher.%Save() 
+		kill
+		
+		s teacher = ##class(Timetable.Data.Teachers).%New()
+		s teacher.FullName = "Бабушкин"
+		do teacher.%Save() 
+		kill
+
+		// Предметы
+		s subject = ##class(Timetable.Data.Subjects).%New()
+		s subject.Name = "Мат. анализ"
+		do subject.%Save() 
+		kill
+		
+		s subject = ##class(Timetable.Data.Subjects).%New()
+		s subject.Name = "Физика"
+		do subject.%Save() 
+		kill
+		
+		s subject = ##class(Timetable.Data.Subjects).%New()
+		s subject.Name = "ООП"
+		do subject.%Save() 
+		kill
+		
+		s subject = ##class(Timetable.Data.Subjects).%New()
+		s subject.Name = "WEB-программирование"
+		do subject.%Save() 
+		kill
+		
+		s subject = ##class(Timetable.Data.Subjects).%New()
+		s subject.Name = "Основы ПО"
+		do subject.%Save() 
+		kill
+		
+		s subject = ##class(Timetable.Data.Subjects).%New()
+		s subject.Name = "Теория баз данных"
+		do subject.%Save() 
+		kill
+		
+		s subject = ##class(Timetable.Data.Subjects).%New()
+		s subject.Name = "Теория языков программирования"
+		do subject.%Save() 
+		kill
+		
+		s subject = ##class(Timetable.Data.Subjects).%New()
+		s subject.Name = "Английский язык"
+		do subject.%Save() 
+		kill
+		
+		s subject = ##class(Timetable.Data.Subjects).%New()
+		s subject.Name = "Командный курсовой проект"
+		do subject.%Save() 
+		kill
+
+	// Связи между преподавателями и предметами
+		do ##class(Timetable.Data.TeacherSubject).Populate(25)
+
+
+	// Создание расписания
+		do ##class(Timetable.Data.Schedules).Populate(20)
+	}
+	catch ex {
+		zw ex
+	}
+]]></Implementation>
+</Method>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^Timetable.Data.SchedulesD</DataLocation>
+<DefaultData>SchedulesDefaultData</DefaultData>
+<IdLocation>^Timetable.Data.SchedulesD</IdLocation>
+<IndexLocation>^Timetable.Data.SchedulesI</IndexLocation>
+<StreamLocation>^Timetable.Data.SchedulesS</StreamLocation>
+<ExtentSize>20</ExtentSize>
+<Data name="SchedulesDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>TimeTape</Value>
+</Value>
+<Value name="3">
+<Value>Subject</Value>
+</Value>
+<Value name="4">
+<Value>Teacher</Value>
+</Value>
+<Value name="5">
+<Value>WeekDay</Value>
+</Value>
+</Data>
+<Property name="%%CLASSNAME">
+<Selectivity>100.0000%</Selectivity>
+<AverageFieldSize>1</AverageFieldSize>
+</Property>
+<Property name="%%ID">
+<Selectivity>1</Selectivity>
+<AverageFieldSize>2</AverageFieldSize>
+</Property>
+<Property name="Subject">
+<Selectivity>11.1111%</Selectivity>
+<AverageFieldSize>1</AverageFieldSize>
+</Property>
+<Property name="Teacher">
+<Selectivity>14.2857%</Selectivity>
+<AverageFieldSize>1</AverageFieldSize>
+</Property>
+<Property name="TimeTape">
+<Selectivity>16.6667%</Selectivity>
+<AverageFieldSize>1</AverageFieldSize>
+</Property>
+<Property name="WeekDay">
+<Selectivity>16.6667%</Selectivity>
+<AverageFieldSize>1</AverageFieldSize>
+</Property>
+<SQLMap name="IDKEY">
+<BlockCount>-4</BlockCount>
+</SQLMap>
+<SQLMap name="SubjectIndex">
+<BlockCount>-4</BlockCount>
+</SQLMap>
+<SQLMap name="TeacherIndex">
+<BlockCount>-4</BlockCount>
+</SQLMap>
+<SQLMap name="TimeTapeIndex">
+<BlockCount>-4</BlockCount>
+</SQLMap>
+<SQLMap name="WeekDayIndex">
+<BlockCount>-4</BlockCount>
+</SQLMap>
+</Storage>
+</Class>
+</Export>

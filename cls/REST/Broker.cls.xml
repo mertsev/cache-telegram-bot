@@ -7,20 +7,12 @@
 <XData name="UrlMap">
 <Data><![CDATA[
 <Routes>
-	<Route Url="/getMe" Method="GET" Call="REST.JSON:getMe" />
-	<Route Url="/getUpdates" Method="GET" Call="REST.JSON:getUpdates" />
-</Routes>
+	<Route Url="/start" Method="GET" Call="Telegram.Bot.Api:Start" />
+ 	<Route Url="/getMe" Method="GET" Call="Telegram.Bot.Api:GetMe" />
+ 	<Route Url="/sendMessage" Method="POST" Call="Telegram.Bot.Api:SendMessage" />
+ 	<Route Url="/getUpdates" Method="GET" Call="Telegram.Bot.Api:GetUpdates" />
+ </Routes>
 ]]></Data>
 </XData>
-
-<Method name="Test">
-<ClassMethod>1</ClassMethod>
-<ReturnType>%Status</ReturnType>
-<Implementation><![CDATA[
-    &html<Работает!>
-    quit $$$OK
-    //комент
-]]></Implementation>
-</Method>
 </Class>
 </Export>

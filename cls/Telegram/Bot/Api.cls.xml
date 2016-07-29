@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="Cache" version="25">
+<Class name="Telegram.Bot.Api">
+<Super>%Base</Super>
+<TimeCreated>64127,58324.201977</TimeCreated>
+
+<Method name="Start">
+<ClassMethod>1</ClassMethod>
+<ReturnType>%Status</ReturnType>
+<Implementation><![CDATA[
+	write "x"
+	for i=1:1:100000 {
+		do ..GetUpdates()
+		//write $Horolog,!
+	}
+]]></Implementation>
+</Method>
+
+<Method name="GetMe">
+<ClassMethod>1</ClassMethod>
+<FormalSpec>userId:%String</FormalSpec>
+<ReturnType>%Status</ReturnType>
+<Implementation><![CDATA[
+	set object = ##class(%Object).$new()
+	set request = ##class(%Net.HttpRequest).%New()
+	set request.Https = $$$YES
+	set request.SSLConfiguration = "bot"
+	set request.Server = "api.telegram.org"
+	try {
+		do request.Get("/bot263308881:AAFweMSLyEZrUe4hCQdNEJGT1dRK6VB6JuQ/getMe")		
+		set response = request.HttpResponse.Data.Read()
+		set object = ##class(%Object).$fromJSON(response)
+		
+		// Your code
+		
+		write object.$toJSON(),!
+		set result = "Id: "_object.result.id_"; Bot name: "_object.result.username
+		do ..SendMessage(userId, result)
+		
+		//s iterator = object.$getIterator()
+    	//while iterator.$getNext(.key, .value) {
+        //	w !, "Name: ", key, "; Value: ", value
+    	//}
+
+		// End your code
+	}
+	catch ex {
+		write !,"------- Error -------"
+		do $System.Status.DisplayError(ex)
+	}
+	
+	if (object.ok = $$$NO)
+	{
+		write !, "Error code: ", object."error_code"
+		write !, "Description: ", object.description
+	}
+	
+	return object.ok
+]]></Implementation>
+</Method>
+
+<Method name="SendMessage">
+<ClassMethod>1</ClassMethod>
+<FormalSpec>chatId:%String="125715369",text:%String="Работает, вроде"</FormalSpec>
+<ReturnType>%Status</ReturnType>
+<Implementation><![CDATA[
+	write chatId, text
+	set object = ##class(%Object).$new()
+	set request = ##class(%Net.HttpRequest).%New()
+	set request.Https = $$$YES
+	set request.SSLConfiguration = "bot"
+	set request.Server = "api.telegram.org"
+	try {
+		do request.InsertParam("chat_id", chatId)
+		do request.InsertParam("text", text)
+		do request.Get("/bot263308881:AAFweMSLyEZrUe4hCQdNEJGT1dRK6VB6JuQ/sendMessage")
+		set response = request.HttpResponse.Data.Read()
+		set object = ##class(%Object).$fromJSON(response)
+		write object.$toJSON(),!
+	}
+	catch ex {
+		write !,"------- Error -------"
+		do $System.Status.DisplayError(ex)
+	}
+	
+	if (object.ok = $$$NO)
+	{
+		write !, "Error code: ", object."error_code"
+		write !, "Description: ", object.description
+	}
+	
+	return object.ok
+]]></Implementation>
+</Method>
+
+<Method name="GetUpdates">
+<ClassMethod>1</ClassMethod>
+<ReturnType>%Status</ReturnType>
+<Implementation><![CDATA[
+
+	set offset = 0
+	set limit = 100
+	set object = ##class(%Object).$new()
+	try {
+		set request = ##class(%Net.HttpRequest).%New()
+		set request.Https = $$$YES
+		set request.SSLConfiguration = "bot"
+		set request.Server = "api.telegram.org"
+		do request.Get("/bot263308881:AAFweMSLyEZrUe4hCQdNEJGT1dRK6VB6JuQ/getUpdates?offset="_offset_"&limit="_limit)		
+		
+		set response = request.HttpResponse.Data.Read()
+		// w response
+		set object = ##class(%Object).$fromJSON(response)
+		
+		set iter = object.result.$getIterator()
+		while iter.$getNext(.key , .value ) {
+			//w "User Id: "_value.message.from.id,!
+			//w "User name: "_value.message.from.username,!
+			//w "First name: "_value.message.from."first_name",!
+			//w "Last name: "_value.message.from."last_name",!
+			
+			//w value.message."message_id",!
+			//write value."update_id",!
+			if value."update_id" > ^lastUpdateId {
+				write "True",!
+				zw ^lastUpdateId
+				set ^lastUpdateId = value."update_id"
+				set user = value.message.from
+				set message = value.message.text
+				set logic = ##class(Timetable.BL.Command).%New()
+		
+				if message = "/getMe" {
+					do ..GetMe(user.id)
+				} elseif message = "Привет" {
+					do ..SendMessage(user.id, "Здравствуй "_user."first_name"_"!")
+				} elseif message = "Расскажи анекдот" {
+					do ..SendMessage(user.id, "Функция будильника ""еще поспать"" ввела программиста утром в бесконечный цикл.")
+				} elseif $Piece(message, " ", 1) = "Расписание" {
+					do ..SendMessage(user.id, logic.GetSchedule($Piece(message, " ", 2)))
+				} elseif message = "Расскажи о себе" {
+					do ..SendMessage(user.id, "Сделано в CCCР")
+				} elseif message = "Какая на улице погода?" {
+					do ..SendMessage(user.id, "https://pogoda.yandex.ru/krasnoyarsk/?from=serp_title/html>")
+				}
+				
+			}
+		}
+	}
+	catch ex {
+		write !,"------- Error -------"
+		do $System.Status.DisplayError(ex)
+	}
+	
+	if (object.ok = $$$NO)
+	{
+		write !, "Error code: ", object."error_code"
+		write !, "Description: ", object.description
+	}
+	
+	return object.ok
+]]></Implementation>
+</Method>
+</Class>
+</Export>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="Cache" version="25">
+<Class name="Timetable.BL.Command">
+<Super>%RegisteredObject</Super>
+<TimeCreated>64128,27462.346621</TimeCreated>
+
+<Method name="GetSchedule">
+<ClassMethod>1</ClassMethod>
+<FormalSpec>Day:%String</FormalSpec>
+<ReturnType>%String</ReturnType>
+<Implementation><![CDATA[
+	if Day = "Сегодня" s Day = "Пятница"
+	if Day = "Завтра" s Day = "Суббота"
+	
+	s sql = "SELECT Subject->Name, TimeTape->TimeStart, Teacher->FullName FROM Timetable_Data.Schedules where WeekDay->Name = '"_Day_"' ORDER BY TimeTape->Number"
+	s statement = ##class(%SQL.Statement).%New(), statement.%ObjectSelectMode = 1
+	s status = statement.%Prepare(sql)
+	s rSet = statement.%Execute()
+
+	set result = ""
+	if (rSet.%SQLCODE = 0) {
+		while (rSet.%Next()) {
+			for i=1:1:rSet.%ResultColumnCount{
+				s data = rSet.%GetData(i)
+				s result = result_data_" "
+			}
+			s result = result_$c(13,10)
+		}
+	}
+	
+	return result
+]]></Implementation>
+</Method>
+</Class>
+</Export>

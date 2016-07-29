@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="Cache" version="25">
+<Class name="Timetable.Data.TeacherSubject">
+<Super>%Persistent,%XML.Adaptor,%Populate</Super>
+<TimeCreated>64128,2998.388657</TimeCreated>
+
+<Property name="Teacher">
+<Type>Timetable.Data.Teachers</Type>
+<Cardinality>one</Cardinality>
+<Inverse>TeachersSubjects</Inverse>
+<Relationship>1</Relationship>
+<Required>1</Required>
+</Property>
+
+<Index name="TeacherIndex">
+<Properties>Teacher</Properties>
+</Index>
+
+<Property name="Subject">
+<Type>Timetable.Data.Subjects</Type>
+<Cardinality>one</Cardinality>
+<Inverse>TeachersSubjects</Inverse>
+<Relationship>1</Relationship>
+<Required>1</Required>
+</Property>
+
+<Index name="SubjectIndex">
+<Properties>Subject</Properties>
+</Index>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^Timetable.Data.TeacherSubjectD</DataLocation>
+<DefaultData>TeacherSubjectDefaultData</DefaultData>
+<IdLocation>^Timetable.Data.TeacherSubjectD</IdLocation>
+<IndexLocation>^Timetable.Data.TeacherSubjectI</IndexLocation>
+<StreamLocation>^Timetable.Data.TeacherSubjectS</StreamLocation>
+<ExtentSize>25</ExtentSize>
+<Data name="TeacherSubjectDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Teacher</Value>
+</Value>
+<Value name="3">
+<Value>Subject</Value>
+</Value>
+</Data>
+<Property name="%%CLASSNAME">
+<Selectivity>100.0000%</Selectivity>
+<AverageFieldSize>1</AverageFieldSize>
+</Property>
+<Property name="%%ID">
+<Selectivity>1</Selectivity>
+<AverageFieldSize>1.64</AverageFieldSize>
+</Property>
+<Property name="Subject">
+<Selectivity>11.1111%</Selectivity>
+<AverageFieldSize>1</AverageFieldSize>
+</Property>
+<Property name="Teacher">
+<Selectivity>14.2857%</Selectivity>
+<AverageFieldSize>1</AverageFieldSize>
+</Property>
+<SQLMap name="IDKEY">
+<BlockCount>-4</BlockCount>
+</SQLMap>
+<SQLMap name="SubjectIndex">
+<BlockCount>-4</BlockCount>
+</SQLMap>
+<SQLMap name="TeacherIndex">
+<BlockCount>-4</BlockCount>
+</SQLMap>
+</Storage>
+</Class>
+</Export>
